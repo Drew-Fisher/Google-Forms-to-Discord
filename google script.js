@@ -1,4 +1,14 @@
-var POST_URL = "WEBBHOOK URL";
+var POST_URL = "PASTE_WEBHOOK_URL_HERE";
+
+const footers =  [
+  "These picks are SPICY!!!!!!",
+  "RNGesus approves",
+ "I ran out of things to say...",
+ "Showcase Greatness",
+ "May Timb Kench be with you",
+ "you sure about those picks?",
+ "These picks gonna be tought to beat"
+ ];
 
 function onSubmit(e) {
     var form = FormApp.getActiveForm();
@@ -6,6 +16,7 @@ function onSubmit(e) {
     var latestResponse = allResponses[allResponses.length - 1];
     var response = latestResponse.getItemResponses();
     var items = [];
+    var name = form.getTitle();
 
     for (var i = 0; i < response.length; i++) {
         var question = response[i].getItem().getTitle();
@@ -44,15 +55,18 @@ function onSubmit(e) {
         "payload": JSON.stringify({
             "content": "‌",
             "embeds": [{
-                "title": "Some nice title here",
-              "color": 33023, // This is optional, you can look for decimal colour codes at https://www.webtoolkitonline.com/hexadecimal-decimal-color-converter.html
+                "title": name,
+              "color": 238644,
                 "fields": items,
                 "footer": {
-                    "text": "Some footer here"
+                    "text": randomFooter()
                 }
             }]
         })
     };
-
     UrlFetchApp.fetch(POST_URL, options);
 };
+
+function randomFooter(){
+  return footers[Math.floor(Math.random() * footers.length)];
+}
