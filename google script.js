@@ -7,7 +7,14 @@ const footers =  [
  "Showcase Greatness",
  "May Timb Kench be with you",
  "you sure about those picks?",
- "These picks gonna be tought to beat"
+ "These picks gonna be tough to beat",
+ "CHA CHAAAAA!!!!!!",
+ "these picks are blessed by the fish gods",
+ "gg noobs",
+ "these picks are the bees knees",
+ "this is where I would put an emoji if discord would let me",
+ "...really you sure?",
+ "TANG GANG!!!!!!!"
  ];
 
 function onSubmit(e) {
@@ -17,9 +24,16 @@ function onSubmit(e) {
     var response = latestResponse.getItemResponses();
     var items = [];
     var name = form.getTitle();
+    var question;
 
     for (var i = 0; i < response.length; i++) {
-        var question = response[i].getItem().getTitle();
+        if(i == 0){
+            question = "Name:";
+        }
+        else{
+            question = response[i].getItem().getTitle();
+        }
+        
         var answer = response[i].getResponse();
         try {
             var parts = answer.match(/[\s\S]{1,1024}/g) || [];
