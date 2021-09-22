@@ -7,7 +7,6 @@ function onSubmit(e) {
     var latestResponse = allResponses[allResponses.length - 1];
     var response = latestResponse.getItemResponses();
     var items = [];
-    var tableItems = [];
     var name = form.getTitle();
     var question;
 
@@ -34,13 +33,13 @@ function onSubmit(e) {
 
         for (var j = 0; j < parts.length; j++) {
             if (j == 0) {
-                tableItems.push({
+                items.push({
                     "name": question,
                     "value": parts[j],
                     "inline": false
                 });
             } else {
-                tableItems.push({
+                items.push({
                     "name": question.concat(" (cont.)"),
                     "value": parts[j],
                     "inline": false
